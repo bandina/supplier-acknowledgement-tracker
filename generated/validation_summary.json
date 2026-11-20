@@ -1,0 +1,57 @@
+{
+  "baseline": {
+    "decision_mismatches": [],
+    "decisions_checked": 5000,
+    "detected_anomalies": 0,
+    "detected_by_type": {},
+    "expected_anomalies": 0,
+    "missed": [],
+    "unexpected_findings": []
+  },
+  "exceptions": {
+    "decision_mismatches": [],
+    "decisions_checked": 1,
+    "detected_anomalies": 4,
+    "detected_by_type": {
+      "PROMISE_BEFORE_ORDER": 1,
+      "STALE_REVISION": 1,
+      "UNAPPROVED_PLAN": 1,
+      "WRONG_PO_LINE": 1
+    },
+    "expected_anomalies": 4,
+    "missed": [],
+    "unexpected_findings": []
+  },
+  "metrics": {
+    "acknowledged_purchase_orders": 9000,
+    "acknowledgement_coverage_pct": 90.0,
+    "acknowledgements": 10000,
+    "approvals": 3598,
+    "change_requests": 5000,
+    "full_acceptances": 7824,
+    "full_rejections": 248,
+    "notifications": 1429,
+    "overdue_without_acknowledgement": 1000,
+    "partial_acceptances": 1928,
+    "pending_changes": 679,
+    "production_orders_at_risk": 1384,
+    "purchase_orders": 10000,
+    "rejected_changes": 683,
+    "superseded_changes": 40,
+    "unapproved_plan_versions": 0
+  },
+  "row_counts": {
+    "acknowledgement": 10000,
+    "allocation": 10000,
+    "approval": 4281,
+    "change_request": 5000,
+    "exception_event": 0,
+    "inventory_plan": 15451,
+    "notification": 1429,
+    "po_line": 11853,
+    "production_order": 10000,
+    "promise_date": 9752,
+    "purchase_order": 10000,
+    "supplier": 120
+  }
+}

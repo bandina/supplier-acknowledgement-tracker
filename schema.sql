@@ -1,0 +1,17 @@
+PRAGMA foreign_keys = ON;
+CREATE TABLE supplier(id TEXT PRIMARY KEY, name TEXT NOT NULL);
+CREATE TABLE purchase_order(id TEXT PRIMARY KEY, supplier_id TEXT NOT NULL REFERENCES supplier(id), ordered TEXT NOT NULL);
+CREATE TABLE po_line(id TEXT PRIMARY KEY, po_id TEXT NOT NULL REFERENCES purchase_order(id), item TEXT NOT NULL, quantity INTEGER NOT NULL CHECK(quantity>0), price INTEGER NOT NULL CHECK(price>0), requested TEXT NOT NULL);
+CREATE INDEX line_po ON po_line(po_id);
+CREATE TABLE acknowledgement(id TEXT PRIMARY KEY, po_id TEXT NOT NULL REFERENCES purchase_order(id), line_id TEXT NOT NULL REFERENCES po_line(id), revision INTEGER NOT NULL CHECK(revision>0), accepted INTEGER NOT NULL CHECK(accepted>=0), rejected INTEGER NOT NULL CHECK(rejected>=0), price INTEGER NOT NULL CHECK(price>0), received TEXT NOT NULL, UNIQUE(line_id,revision));
+CREATE INDEX ack_po ON acknowledgement(po_id);
+CREATE TABLE promise_date(id TEXT PRIMARY KEY, ack_id TEXT NOT NULL UNIQUE REFERENCES acknowledgement(id), promised TEXT NOT NULL);
+CREATE TABLE change_request(id TEXT PRIMARY KEY, ack_id TEXT NOT NULL UNIQUE REFERENCES acknowledgement(id), quantity_delta INTEGER NOT NULL, price_delta INTEGER NOT NULL, days_delta INTEGER, review INTEGER NOT NULL CHECK(review IN (0,1)));
+CREATE TABLE approval(id TEXT PRIMARY KEY, change_id TEXT NOT NULL UNIQUE REFERENCES change_request(id), decision TEXT NOT NULL CHECK(decision IN ('APPROVED','REJECTED')), actor TEXT NOT NULL, reason TEXT NOT NULL, decided TEXT NOT NULL);
+CREATE TABLE inventory_plan(id INTEGER PRIMARY KEY, line_id TEXT NOT NULL REFERENCES po_line(id), approval_id TEXT UNIQUE REFERENCES approval(id), quantity INTEGER NOT NULL CHECK(quantity>=0), arrival TEXT, effective TEXT NOT NULL);
+CREATE INDEX plan_line ON inventory_plan(line_id,id);
+CREATE TABLE production_order(id TEXT PRIMARY KEY, item TEXT NOT NULL, demand INTEGER NOT NULL CHECK(demand>0), needed TEXT NOT NULL, planner TEXT NOT NULL);
+CREATE TABLE allocation(line_id TEXT REFERENCES po_line(id) NOT NULL, production_id TEXT REFERENCES production_order(id) NOT NULL, quantity INTEGER NOT NULL CHECK(quantity>0), PRIMARY KEY(line_id,production_id));
+CREATE INDEX allocation_job ON allocation(production_id);
+CREATE TABLE notification(id TEXT PRIMARY KEY, plan_id INTEGER NOT NULL REFERENCES inventory_plan(id), production_id TEXT NOT NULL REFERENCES production_order(id), shortfall INTEGER NOT NULL CHECK(shortfall>=0), created TEXT NOT NULL, UNIQUE(plan_id,production_id));
+CREATE TABLE exception_event(id INTEGER PRIMARY KEY, po_id TEXT NOT NULL REFERENCES purchase_order(id), line_id TEXT NOT NULL REFERENCES po_line(id), revision INTEGER NOT NULL, accepted INTEGER NOT NULL, rejected INTEGER NOT NULL, price INTEGER NOT NULL, promised TEXT, received TEXT NOT NULL, reason TEXT NOT NULL);

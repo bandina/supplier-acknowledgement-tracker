@@ -1,0 +1,9 @@
+{
+  "as_of": "2026-11-20",
+  "combined_events_target": 15000,
+  "external_datasets": [],
+  "purchase_orders": 10000,
+  "rules": "See docs/design.md",
+  "seed": 20261022,
+  "source": "Synthetic, authored for this project"
+}

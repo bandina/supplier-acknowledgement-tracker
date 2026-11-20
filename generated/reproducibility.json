@@ -1,0 +1,38 @@
+{
+  "identical": true,
+  "row_counts": {
+    "acknowledgement": 10000,
+    "allocation": 10000,
+    "approval": 4281,
+    "change_request": 5000,
+    "exception_event": 0,
+    "inventory_plan": 15451,
+    "notification": 1429,
+    "po_line": 11853,
+    "production_order": 10000,
+    "promise_date": 9752,
+    "purchase_order": 10000,
+    "supplier": 120
+  },
+  "sha256": {
+    "baseline.json": "634b5ed6e2930810ea905247a0054e77a84b282a3fb897db9ff4a8c7272df851",
+    "baseline.sql": "14c19c1f1b071cd266ef2eb246a20576e1d4bac3a5d1874b1fce7a655b7b83b5",
+    "csv/acknowledgement.csv": "68139ec3c08a2301a68433e3ff14657a5574ec887296d9433df8dc901bace8fa",
+    "csv/allocation.csv": "6c1ab0641140726a74018a12f601514e99f533f445683dc18e89bc9202499ce3",
+    "csv/approval.csv": "4584e7b4dbab1bbe54c973e0bb2f9dc69093645f8e638e7bc9c897b5eb72cd1b",
+    "csv/change_request.csv": "32285806129e99e90894b5add54c3cbd0f3765e8488f7c926bdddba452912806",
+    "csv/exception_event.csv": "1b0fec22c75099703ae7d42ed199f2798849e2344854baa48d8eb6c009db92b4",
+    "csv/inventory_plan.csv": "bc8e5ae81a63a9c841b6fceb4d31311b8e8ffe8dff324a335a149ee6d56d68c8",
+    "csv/notification.csv": "9f296b8fddff1f63226d3da7a2d444d938b7e2a0085180c08032e7ed2e6872df",
+    "csv/po_line.csv": "9a57d1f631d2d802c346b9b14355f10ee1ea58657b6346872133eab66c3622e3",
+    "csv/production_order.csv": "eeae69f29680db1966d3c84bde3125808e56d02fa99ed9d85b70c7923927d3d4",
+    "csv/promise_date.csv": "fb87e52e827f30d7366cbde766a75668971131fd682ccedc7605e839de173030",
+    "csv/purchase_order.csv": "b2b71909a3e3bbc1d7f2579965f740806d5076a66085343c23de0c57c352e805",
+    "csv/supplier.csv": "e8360b288ae4ca96695a2ff1ab2f8a1dc5ea33b7f8799ca14320e8b3e6559fc9",
+    "exceptions.sql": "81a27c1dd47e3d8577bc729b7f5f9176943adb7e454ed58358ac6217b870b8df",
+    "exceptions_ground_truth.csv": "b61bd8e9de085f79d2826d99f43d363af2d26f8d48b691a4d34f05a992edf5ad",
+    "ground_truth.csv": "58dc36dac2a6def3b514b440012c622978228c934c20218ff6f9c6a3dcca8fd5",
+    "source_manifest.json": "95d6cca2f4a33ff8c03340e898bdfce6d97e5ef103754a482b1829ea65317e85",
+    "validation_summary.json": "6e9b9ab4325594ac264e0e372215b62e32d3c2219bc46ba0a3c7e954f4e8b53a"
+  }
+}
